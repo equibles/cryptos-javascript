@@ -1,4 +1,4 @@
-# Equibles Cryptos API for Python
+# Equibles Cryptos API for Javascript
 
 ## Installation
 
@@ -69,8 +69,12 @@ Query String.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Query String.apiKeyPrefix['ApiKey'] = "Token"
 
-var api = new EquiblesCryptos.ExchangesApi()
-api.currencies().then(function(data) {
+var api = new EquiblesCryptos.CryptosApi()
+var opts = { 
+  'page': 1, // {Number} The number of the page to request.
+  'pageSize': 100 // {Number} The number of elements in each page. Max value: 100.
+};
+api.list(opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -84,71 +88,22 @@ All URIs are relative to *https://api.equibles.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*EquiblesCryptos.ExchangesApi* | [**currencies**](docs/ExchangesApi.md#currencies) | **GET** /stocks/exchanges/currencies | Get the list of all the currencies supported by this API.
-*EquiblesCryptos.ExchangesApi* | [**list**](docs/ExchangesApi.md#list) | **GET** /stocks/exchanges/list | Get the list of all the exchanges supported by this API.
-*EquiblesCryptos.ExchangesApi* | [**stocks**](docs/ExchangesApi.md#stocks) | **GET** /stocks/exchanges/stocks | Get all the stocks for a given exchange.
-*EquiblesCryptos.FundamentalsApi* | [**dividends**](docs/FundamentalsApi.md#dividends) | **GET** /stocks/fundamentals/dividends | Get the dividends for a given stock.
-*EquiblesCryptos.FundamentalsApi* | [**financialReports**](docs/FundamentalsApi.md#financialReports) | **GET** /stocks/fundamentals/financialreports | Get the financial statements for a given stock.
-*EquiblesCryptos.MetricsApi* | [**priceToEarnings**](docs/MetricsApi.md#priceToEarnings) | **GET** /stocks/metrics/pricetoearnings | Get the price to earnings ratio over time for this stock.
-*EquiblesCryptos.NewsApi* | [**list**](docs/NewsApi.md#list) | **GET** /stocks/news/list | Get the latest news for this stock.
-*EquiblesCryptos.NewsApi* | [**publishers**](docs/NewsApi.md#publishers) | **GET** /stocks/news/publishers | Get all the available news publishers.
-*EquiblesCryptos.PerformanceApi* | [**list**](docs/PerformanceApi.md#list) | **GET** /stocks/performance/list | Lists the performance for a given stock.
-*EquiblesCryptos.PricesApi* | [**endOfDay**](docs/PricesApi.md#endOfDay) | **GET** /stocks/prices/endofday | Lists the end of day prices for a given stock.
-*EquiblesCryptos.PricesApi* | [**intraday**](docs/PricesApi.md#intraday) | **GET** /stocks/prices/intraday | Lists the intraday prices for a given stock with one minute precision.
-*EquiblesCryptos.SectorsApi* | [**list**](docs/SectorsApi.md#list) | **GET** /stocks/sectors/list | Lists all the sectors.
-*EquiblesCryptos.SectorsApi* | [**searchStocks**](docs/SectorsApi.md#searchStocks) | **GET** /stocks/sectors/searchstocks | Lists and the stock in a given sector/industry.
-*EquiblesCryptos.StocksApi* | [**list**](docs/StocksApi.md#list) | **GET** /stocks/list | Get a list of all the available stocks.
-*EquiblesCryptos.StocksApi* | [**officers**](docs/StocksApi.md#officers) | **GET** /stocks/officers | Get the officers of the company.
-*EquiblesCryptos.StocksApi* | [**profile**](docs/StocksApi.md#profile) | **GET** /stocks/profile | The profile of this stock.
-*EquiblesCryptos.StocksApi* | [**screener**](docs/StocksApi.md#screener) | **POST** /stocks/screener | Get a list of stocks constraint to several criteria.
-*EquiblesCryptos.StocksApi* | [**search**](docs/StocksApi.md#search) | **GET** /stocks/search | Search among all the available stocks.
-*EquiblesCryptos.StocksApi* | [**splits**](docs/StocksApi.md#splits) | **GET** /stocks/splits | Get all the splits for a given stock.
-*EquiblesCryptos.TransactionsApi* | [**insiders**](docs/TransactionsApi.md#insiders) | **GET** /stocks/transactions/insiders | Lists the insider transactions for a given stock.
-*EquiblesCryptos.TransactionsApi* | [**institutional**](docs/TransactionsApi.md#institutional) | **GET** /stocks/transactions/institutional | Lists the institutional transactions for a given stock.
+*EquiblesCryptos.CryptosApi* | [**list**](docs/CryptosApi.md#list) | **GET** /cryptos/list | Get a list of all the available crytocurrencies.
+*EquiblesCryptos.CryptosApi* | [**profile**](docs/CryptosApi.md#profile) | **GET** /cryptos/profile | The profile of this cryptocurrency.
+*EquiblesCryptos.PricesApi* | [**endOfDay**](docs/PricesApi.md#endOfDay) | **GET** /cryptos/prices/endofday | Lists the end of day prices for a given cryptocurrency.
+*EquiblesCryptos.PricesApi* | [**intraday**](docs/PricesApi.md#intraday) | **GET** /cryptos/prices/intraday | Lists the intraday prices for a given cryptocurrency with one minute precision.
 
 ## Documentation for Models
 
  - [EquiblesCryptos.AssetType](docs/AssetType.md)
- - [EquiblesCryptos.BalanceSheet](docs/BalanceSheet.md)
- - [EquiblesCryptos.CashFlowStatement](docs/CashFlowStatement.md)
- - [EquiblesCryptos.CurrenciesResponse](docs/CurrenciesResponse.md)
- - [EquiblesCryptos.Currency](docs/Currency.md)
- - [EquiblesCryptos.Dividend](docs/Dividend.md)
- - [EquiblesCryptos.DividendsResponse](docs/DividendsResponse.md)
+ - [EquiblesCryptos.CryptoCurrencyProfile](docs/CryptoCurrencyProfile.md)
+ - [EquiblesCryptos.CryptoCurrencyProfileResponse](docs/CryptoCurrencyProfileResponse.md)
+ - [EquiblesCryptos.CryptoCurrencyProfilesResponse](docs/CryptoCurrencyProfilesResponse.md)
  - [EquiblesCryptos.Exchange](docs/Exchange.md)
- - [EquiblesCryptos.ExchangesResponse](docs/ExchangesResponse.md)
- - [EquiblesCryptos.FinancialAssetsResponse](docs/FinancialAssetsResponse.md)
- - [EquiblesCryptos.FinancialReport](docs/FinancialReport.md)
- - [EquiblesCryptos.FiscalPeriod](docs/FiscalPeriod.md)
- - [EquiblesCryptos.FundamentalsResponse](docs/FundamentalsResponse.md)
  - [EquiblesCryptos.Image](docs/Image.md)
- - [EquiblesCryptos.IncomeStatement](docs/IncomeStatement.md)
- - [EquiblesCryptos.Industry](docs/Industry.md)
- - [EquiblesCryptos.MetricNullablePointsResponse](docs/MetricNullablePointsResponse.md)
- - [EquiblesCryptos.News](docs/News.md)
- - [EquiblesCryptos.NewsResponse](docs/NewsResponse.md)
- - [EquiblesCryptos.NullablePoint](docs/NullablePoint.md)
- - [EquiblesCryptos.Officer](docs/Officer.md)
- - [EquiblesCryptos.OfficersResponse](docs/OfficersResponse.md)
- - [EquiblesCryptos.Performance](docs/Performance.md)
- - [EquiblesCryptos.PerformanceResponse](docs/PerformanceResponse.md)
  - [EquiblesCryptos.Price](docs/Price.md)
  - [EquiblesCryptos.PricesResponse](docs/PricesResponse.md)
- - [EquiblesCryptos.Publisher](docs/Publisher.md)
- - [EquiblesCryptos.PublishersResponse](docs/PublishersResponse.md)
- - [EquiblesCryptos.Recommendation](docs/Recommendation.md)
  - [EquiblesCryptos.ResponseStatus](docs/ResponseStatus.md)
- - [EquiblesCryptos.ScreenerRequest](docs/ScreenerRequest.md)
- - [EquiblesCryptos.Sector](docs/Sector.md)
- - [EquiblesCryptos.SectorsResponse](docs/SectorsResponse.md)
- - [EquiblesCryptos.SplitsResponse](docs/SplitsResponse.md)
- - [EquiblesCryptos.StockProfile](docs/StockProfile.md)
- - [EquiblesCryptos.StockProfileResponse](docs/StockProfileResponse.md)
- - [EquiblesCryptos.StockProfilesResponse](docs/StockProfilesResponse.md)
- - [EquiblesCryptos.StockSplit](docs/StockSplit.md)
- - [EquiblesCryptos.Transaction](docs/Transaction.md)
- - [EquiblesCryptos.TransactionType](docs/TransactionType.md)
- - [EquiblesCryptos.TransactionsResponse](docs/TransactionsResponse.md)
 
 ## Documentation for Authorization
 

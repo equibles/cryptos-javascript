@@ -4,14 +4,14 @@ All URIs are relative to *https://api.equibles.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**endOfDay**](PricesApi.md#endOfDay) | **GET** /stocks/prices/endofday | Lists the end of day prices for a given stock.
-[**intraday**](PricesApi.md#intraday) | **GET** /stocks/prices/intraday | Lists the intraday prices for a given stock with one minute precision.
+[**endOfDay**](PricesApi.md#endOfDay) | **GET** /cryptos/prices/endofday | Lists the end of day prices for a given cryptocurrency.
+[**intraday**](PricesApi.md#intraday) | **GET** /cryptos/prices/intraday | Lists the intraday prices for a given cryptocurrency with one minute precision.
 
 <a name="endOfDay"></a>
 # **endOfDay**
-> PricesResponse endOfDay(fullTicker, opts)
+> PricesResponse endOfDay(ticker, opts)
 
-Lists the end of day prices for a given stock.
+Lists the end of day prices for a given cryptocurrency.
 
 ### Example
 ```javascript
@@ -25,14 +25,14 @@ Query String.apiKey = 'YOUR API KEY';
 //Query String.apiKeyPrefix = 'Token';
 
 let apiInstance = new EquiblesCryptos.PricesApi();
-let fullTicker = "fullTicker_example"; // String | The fully qualified ticker of the stock. Example: AAPL.XNAS
+let ticker = "ticker_example"; // String | The ticker of the cryptocurrency. Example: BTC (for Bitcoin)
 let opts = { 
   'startTime': new Date("2013-10-20T19:20:30+01:00"), // Date | The start time of the window. UTC time formatted according to ISO 8601 (i.e: 2022-02-01T13:45:17)
   'endTime': new Date("2013-10-20T19:20:30+01:00"), // Date | The end time of the window. UTC time formatted according to ISO 8601 (i.e: 2022-02-01T13:45:17)
   'page': 1, // Number | The number of the page to request.
   'pageSize': 1000 // Number | The number of elements in each page. Max value: 50000.
 };
-apiInstance.endOfDay(fullTicker, opts).then((data) => {
+apiInstance.endOfDay(ticker, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -44,7 +44,7 @@ apiInstance.endOfDay(fullTicker, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fullTicker** | **String**| The fully qualified ticker of the stock. Example: AAPL.XNAS | 
+ **ticker** | **String**| The ticker of the cryptocurrency. Example: BTC (for Bitcoin) | 
  **startTime** | **Date**| The start time of the window. UTC time formatted according to ISO 8601 (i.e: 2022-02-01T13:45:17) | [optional] 
  **endTime** | **Date**| The end time of the window. UTC time formatted according to ISO 8601 (i.e: 2022-02-01T13:45:17) | [optional] 
  **page** | **Number**| The number of the page to request. | [optional] [default to 1]
@@ -65,9 +65,9 @@ Name | Type | Description  | Notes
 
 <a name="intraday"></a>
 # **intraday**
-> PricesResponse intraday(fullTicker, opts)
+> PricesResponse intraday(ticker, opts)
 
-Lists the intraday prices for a given stock with one minute precision.
+Lists the intraday prices for a given cryptocurrency with one minute precision.
 
 ### Example
 ```javascript
@@ -81,14 +81,14 @@ Query String.apiKey = 'YOUR API KEY';
 //Query String.apiKeyPrefix = 'Token';
 
 let apiInstance = new EquiblesCryptos.PricesApi();
-let fullTicker = "fullTicker_example"; // String | The fully qualified ticker of the stock. Example: AAPL.XNAS
+let ticker = "ticker_example"; // String | The ticker of the cryptocurrency. Example: BTC (for Bitcoin)
 let opts = { 
   'startTime': new Date("2013-10-20T19:20:30+01:00"), // Date | The start time of the window. UTC time formatted according to ISO 8601 (i.e: 2022-02-01T13:45:17)
   'endTime': new Date("2013-10-20T19:20:30+01:00"), // Date | The end time of the window. UTC time formatted according to ISO 8601 (i.e: 2022-02-01T13:45:17)
   'page': 1, // Number | The number of the page to request.
   'pageSize': 1000 // Number | The number of elements in each page. Max value: 50000.
 };
-apiInstance.intraday(fullTicker, opts).then((data) => {
+apiInstance.intraday(ticker, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -100,7 +100,7 @@ apiInstance.intraday(fullTicker, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fullTicker** | **String**| The fully qualified ticker of the stock. Example: AAPL.XNAS | 
+ **ticker** | **String**| The ticker of the cryptocurrency. Example: BTC (for Bitcoin) | 
  **startTime** | **Date**| The start time of the window. UTC time formatted according to ISO 8601 (i.e: 2022-02-01T13:45:17) | [optional] 
  **endTime** | **Date**| The end time of the window. UTC time formatted according to ISO 8601 (i.e: 2022-02-01T13:45:17) | [optional] 
  **page** | **Number**| The number of the page to request. | [optional] [default to 1]
